@@ -124,7 +124,7 @@ export const about = {
 export const experience = [
   {
     company: "Flexie Inc (Techstars '22)",
-    role: "Junior Software Engineer",
+    role: "Software Engineer",
     period: "Sep 2023 – Present",
     impact: [
      "Develop and maintain scalable backend APIs using Node.js, TypeScript, and PostgreSQL.",
