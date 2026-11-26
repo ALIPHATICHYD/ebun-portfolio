@@ -107,7 +107,7 @@ export default function Nav() {
             >
               Résumé <Download size={20} />
             </a>
-            <a href={profile.calendly} className="btn btn-primary mt-4">
+            <a href={profile.calendly} className="btn btn-tangerine mt-4">
               Book a 15-min call
             </a>
           </nav>

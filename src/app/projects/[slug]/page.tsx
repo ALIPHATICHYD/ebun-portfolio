@@ -67,6 +67,30 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <p className="font-hand text-2xl text-tangerine-deep">the story</p>
             <h2 className="mb-5 text-4xl">What I did</h2>
             <p className="max-w-[65ch] text-lg leading-relaxed text-ink-soft">{project.description}</p>
+
+            {(project.decisions || project.next) && (
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                {project.decisions && (
+                  <div className="rounded-3xl border border-line bg-paper p-6">
+                    <h3 className="mb-3 text-2xl">Decisions so far</h3>
+                    <ul className="grid gap-3">
+                      {project.decisions.map((d) => (
+                        <li key={d} className="flex gap-3 leading-snug text-ink-soft">
+                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-tangerine" />
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {project.next && (
+                  <div className="rounded-3xl bg-tangerine-soft p-6">
+                    <h3 className="mb-3 text-2xl">What’s next</h3>
+                    <p className="leading-snug">{project.next}</p>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
           <aside className="flex flex-col gap-4">
             <div className="rounded-3xl border border-line bg-paper p-6">

@@ -314,6 +314,9 @@ export type Project = {
     label: string;
     href: string;
   }[];
+  /** Optional build notes shown on the project page. */
+  decisions?: string[];
+  next?: string;
 };
 
 export const projects: Project[] = [
@@ -344,8 +347,14 @@ export const projects: Project[] = [
     image: "/projects/project-6.png",
     description:
       "Kàwé is an EdTech product I'm currently developing around the idea that learning should be engaging as well as effective. I'm shaping the product experience around interactive quizzes, personalization, gamification, leaderboards, and rewards, with a focus on making quality learning experiences more accessible to children. The project brings together my interests in software, education, product design, and building technology with meaningful real-world impact.",
-    stack: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
+    stack: ["Node.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
     links: [],
+    decisions: [
+      "Built with Node.js, TypeScript and PostgreSQL, styled with Tailwind CSS.",
+      "Lessons are grouped into sections. Section 1, Introduction, holds about five lessons, so a child always knows where they are.",
+      "XP comes next. I'm finishing the lesson structure first; XP scoring hasn't been built yet.",
+    ],
+    next: "More Nigerian languages after Yoruba, starting with Igbo and Hausa. My vision is a Duolingo for our languages, with live classes built in.",
   },
 
   {

@@ -42,7 +42,7 @@ export default function Home() {
               <p className="mt-6 max-w-xl text-lg text-paper/80">{highlights.subline}</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Link href="/projects" className="btn btn-accent">
+              <Link href="/projects" className="btn btn-tangerine">
                 See my work <ArrowRight size={18} />
               </Link>
               <a href={profile.resumeFile} className="btn btn-outline-light">
