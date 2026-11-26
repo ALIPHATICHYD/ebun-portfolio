@@ -55,7 +55,7 @@ export default function Home() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/about/pic-2.jpg"
-              alt="Ebun presenting a coding project on a projector screen"
+              alt="Ebun smiling with her volunteer badge at a tech event"
               className="absolute inset-0 h-full w-full object-cover"
             />
             <CircleBadge text="SOFTWARE ENGINEER · TEACHER · BUILDER · " className="absolute right-4 bottom-4" />
