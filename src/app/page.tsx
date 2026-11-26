@@ -34,7 +34,7 @@ export default function Home() {
           <div style={{ "--i": 0 } as React.CSSProperties} className="rise tile flex flex-col justify-between gap-10 bg-forest text-paper md:col-span-4 md:row-span-2 sm:p-12">
             <p className="font-hand text-3xl text-gold">{highlights.greeting}</p>
             <div>
-              <h1 className="text-[clamp(3.25rem,8vw,6.75rem)] leading-[0.92] text-paper">
+              <h1 className="text-[clamp(2.875rem,7vw,5.75rem)] leading-[0.93] text-paper">
                 {highlights.headline}
                 <br />
                 I build things <span className="text-gold">people use.</span>
@@ -56,9 +56,9 @@ export default function Home() {
             <img
               src="/about/pic-2.jpg"
               alt="Ebun smiling with her volunteer badge at a tech event"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-[42%_78%]"
             />
-            <CircleBadge text="SOFTWARE ENGINEER · TEACHER · BUILDER · " className="absolute right-4 bottom-4" />
+            <CircleBadge text="SOFTWARE ENGINEER · TEACHER · BUILDER · " className="absolute top-4 right-4" />
           </div>
 
           <div style={{ "--i": 2 } as React.CSSProperties} className="rise grid gap-4 sm:grid-cols-2 md:col-span-2 md:grid-cols-1">
@@ -87,9 +87,9 @@ export default function Home() {
       <StackTicker />
 
       {/* ---- Work ---- */}
-      <section className="wrap py-14">
+      <section className="wrap py-20">
         <SectionHead note="a few favourites" title="Things I’ve made" href="/projects" linkLabel={`All ${projects.length} projects`} />
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="mt-4 grid gap-8 md:grid-cols-2 md:gap-10">
           {featured.slice(0, 3).map((p, i) => (
             <ProjectCard key={p.slug} project={p} index={i} featured={i === 0} />
           ))}

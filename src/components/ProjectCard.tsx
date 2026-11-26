@@ -7,7 +7,7 @@ const mats = [
   "bg-sage-soft text-ink",
   "bg-tangerine-soft text-ink",
   "bg-forest text-paper",
-  "bg-tangerine text-on-tangerine",
+  "bg-pine text-paper",
   "bg-paper text-ink border border-line",
   "bg-gold-soft text-ink",
 ];

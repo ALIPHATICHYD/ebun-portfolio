@@ -43,12 +43,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <p
-          aria-hidden="true"
-          className="font-display font-extrabold leading-[0.8] pb-[0.14em] tracking-[-0.04em] text-gold text-[clamp(6.5rem,22vw,20rem)]"
-        >
-          Ẹbun.
-        </p>
         <p className="text-sm">
           © {new Date().getFullYear()} {profile.name}
         </p>

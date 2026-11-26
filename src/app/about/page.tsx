@@ -8,7 +8,7 @@ export const metadata = { title: "About — Ebunoluwa Amoo" };
 const collage = [
   { src: "/about/pic-1.jpg", caption: "Class demo", className: "-rotate-3 md:mt-10" },
   { src: "/about/pic-3.jpg", caption: "Showcase", className: "rotate-2" },
-  { src: "/about/pic-4.jpg", caption: "Community day", className: "-rotate-1 md:mt-16" },
+  { src: "/about/pic-4.jpg", caption: "Teaching", className: "-rotate-1 md:mt-16" },
 ];
 
 const offClock = [

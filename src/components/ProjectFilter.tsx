@@ -36,7 +36,7 @@ export default function ProjectFilter({ projects }: { projects: Project[] }) {
           );
         })}
       </div>
-      <div className="grid gap-5 md:grid-cols-2">
+      <div className="grid gap-8 md:grid-cols-2 md:gap-10">
         {shown.map((p, i) => (
           <ProjectCard key={p.slug} project={p} index={projects.indexOf(p)} featured={active === "all" && i === 0} />
         ))}
