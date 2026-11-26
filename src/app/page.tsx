@@ -31,7 +31,7 @@ export default function Home() {
       {/* ---- Bento hero ---- */}
       <section className="wrap pt-6 sm:pt-10">
         <div className="grid gap-4 md:grid-cols-6 md:grid-rows-[auto_auto]">
-          <div className="tile flex flex-col justify-between gap-10 bg-forest text-paper md:col-span-4 md:row-span-2 sm:p-12">
+          <div style={{ "--i": 0 } as React.CSSProperties} className="rise tile flex flex-col justify-between gap-10 bg-forest text-paper md:col-span-4 md:row-span-2 sm:p-12">
             <p className="font-hand text-3xl text-gold">{highlights.greeting}</p>
             <div>
               <h1 className="text-[clamp(3.25rem,8vw,6.75rem)] leading-[0.92] text-paper">
@@ -51,7 +51,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="tile relative min-h-80 bg-sage-soft p-0 md:col-span-2">
+          <div style={{ "--i": 1 } as React.CSSProperties} className="rise tile relative min-h-80 bg-sage-soft p-0 md:col-span-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/about/pic-2.jpg"
@@ -61,7 +61,7 @@ export default function Home() {
             <CircleBadge text="SOFTWARE ENGINEER · TEACHER · BUILDER · " className="absolute right-4 bottom-4" />
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 md:col-span-2 md:grid-cols-1">
+          <div style={{ "--i": 2 } as React.CSSProperties} className="rise grid gap-4 sm:grid-cols-2 md:col-span-2 md:grid-cols-1">
             <Link href="/projects/kawe" className="tile group flex flex-col gap-2 bg-gold text-forest">
               <span className="text-sm font-bold opacity-80">Building now</span>
               <span className="flex items-center justify-between font-display text-3xl font-[650]">
@@ -104,7 +104,7 @@ export default function Home() {
             const Icon = strengthIcon[s.icon];
             return (
               <article key={s.title} className={`tile flex flex-col gap-4 ${strengthTone[s.tone]}`}>
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-current/10">
+                <span className="grid h-14 w-14 place-items-center rounded-lg bg-current/10">
                   <Icon size={28} />
                 </span>
                 <h3 className="text-3xl">{s.title}</h3>

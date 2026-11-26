@@ -38,7 +38,7 @@ export default function ExperiencePage() {
           <h1 className="max-w-3xl text-[clamp(3rem,7vw,6rem)] leading-[0.95]">Where I’ve worked and grown.</h1>
         </div>
         <a href={profile.resumeFile} className="tile flex items-center gap-4 bg-gold p-6 text-forest transition-transform hover:-translate-y-1">
-          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-paper">
+          <span className="grid h-14 w-14 place-items-center rounded-lg bg-paper">
             <Download size={26} />
           </span>
           <span>
@@ -120,7 +120,7 @@ export default function ExperiencePage() {
         <div className="grid gap-5 md:grid-cols-2">
           {education.map((e, i) => (
             <article key={e.degree} className={`tile flex gap-5 ${i ? "bg-sage-soft" : "bg-paper border border-line"}`}>
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-gold text-forest">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-lg bg-gold text-forest">
                 <Cap size={26} />
               </span>
               <div>

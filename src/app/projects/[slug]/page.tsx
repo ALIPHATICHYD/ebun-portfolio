@@ -58,7 +58,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <img
             src={project.image}
             alt={`Screenshot of ${project.name}`}
-            className="w-full rounded-[1.25rem] border border-line object-cover object-top shadow-[var(--shadow-lift)]"
+            className="w-full rounded-[1.25rem] sm:rounded-[0.75rem] border border-line object-cover object-top shadow-[var(--shadow-lift)]"
           />
         </div>
 

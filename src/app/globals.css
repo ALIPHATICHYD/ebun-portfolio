@@ -26,6 +26,10 @@
   --ink-faint: oklch(0.27 0.03 152 / 0.55);
 
   --shadow-lift: 0 18px 40px -22px oklch(0.2 0.03 160 / 0.5);
+
+  /* Shared motion tokens */
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1); /* small overshoot = follow-through */
 }
 
 @theme inline {
@@ -97,6 +101,15 @@
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+}
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+}
 
 @layer components {
   .wrap {
@@ -121,9 +134,11 @@
     font-size: 1rem;
     line-height: 1;
     cursor: pointer;
-    transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background-color 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.22s var(--ease-out), background-color 0.22s ease, box-shadow 0.22s ease;
   }
   .btn:hover { transform: translateY(-2px); }
+  /* Anticipation: the button presses in before the page moves */
+  .btn:active { transform: translateY(0) scale(0.97); transition-duration: 0.08s; }
   .btn-primary { background: var(--forest); color: var(--paper); }
   .btn-primary:hover { background: var(--pine); }
   .btn-accent { background: var(--gold); color: var(--forest); }
@@ -149,7 +164,7 @@
     overflow: hidden;
     border-radius: 1.875rem;
     padding: 1.625rem 1.625rem 0;
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+    transition: transform 0.26s var(--ease-spring);
   }
   .mat-shot {
     margin-top: 0.375rem;
@@ -159,7 +174,7 @@
     border-radius: 1rem 1rem 0 0;
     box-shadow: var(--shadow-lift);
     transform: rotate(-2deg) translateY(10px);
-    transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+    transition: transform 0.26s var(--ease-spring);
   }
   .mat:hover { transform: translateY(-4px); }
   .mat:hover .mat-shot { transform: none; }
@@ -171,7 +186,7 @@
     border-radius: 6px 6px 22px 6px;
     padding: 1.875rem 1.75rem 1.5rem;
     box-shadow: 0 20px 40px -28px oklch(0.2 0.03 160 / 0.55);
-    transition: transform 0.3s ease;
+    transition: transform 0.24s var(--ease-spring);
   }
   .note:hover { transform: rotate(0deg) !important; }
   .tape {
@@ -193,7 +208,7 @@
     padding: 0.75rem 0.75rem 1rem;
     border-radius: 6px;
     box-shadow: 0 22px 40px -26px oklch(0.2 0.03 160 / 0.6);
-    transition: transform 0.3s ease;
+    transition: transform 0.24s var(--ease-spring);
   }
   .polaroid:hover { transform: rotate(0deg) scale(1.03) !important; z-index: 5; }
   .polaroid img { display: block; width: 100%; object-fit: cover; border-radius: 2px; }
@@ -249,9 +264,14 @@
 
   /* ---- Edge-masked scroller ---- */
   .edge-fade {
-    -webkit-mask: linear-gradient(90deg, transparent, black 8% 92%, transparent);
-    mask: linear-gradient(90deg, transparent, black 8% 92%, transparent);
+    -webkit-mask: linear-gradient(90deg, transparent, black 15% 85%, transparent);
+    mask: linear-gradient(90deg, transparent, black 15% 85%, transparent);
   }
+
+  /* Staggered entrance: set --i on each item */
+  .rise { animation: rise 0.5s var(--ease-out) both; animation-delay: calc(var(--i, 0) * 70ms); }
+  .sheet-up { animation: sheet-up 0.26s var(--ease-out) both; }
+  .fade-in { animation: fade-in 0.2s ease both; }
 
   .link-editorial {
     color: var(--pine);

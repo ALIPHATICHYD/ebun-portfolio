@@ -26,7 +26,7 @@ export default function CopyEmail({ email }: { email: string }) {
   return (
     <button type="button" onClick={copy} className="btn btn-paper" aria-live="polite">
       <span
-        className={`grid transition-[opacity,filter,width] duration-300 ${
+        className={`grid transition-[opacity,filter,width] duration-[220ms] ${
           copied ? "w-[18px] opacity-100 blur-0" : "w-0 opacity-0 blur-[4px]"
         }`}
       >
