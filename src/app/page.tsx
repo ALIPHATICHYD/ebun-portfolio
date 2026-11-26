@@ -16,7 +16,7 @@ const strengthTone = {
 };
 
 const moments = [
-  { src: "/about/pic-3.jpg", caption: "Award night", tilt: "-rotate-3" },
+  { src: "/about/pic-3.jpg", caption: "Showcase", tilt: "-rotate-3" },
   { src: "/about/pic-10.jpg", caption: "Demo day", tilt: "rotate-2" },
   { src: "/about/pic-5.jpg", caption: "Teaching", tilt: "-rotate-1" },
   { src: "/about/pic-6.jpg", caption: "Show and tell", tilt: "rotate-3" },
