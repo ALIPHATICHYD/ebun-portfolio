@@ -314,6 +314,8 @@ export type Project = {
     label: string;
     href: string;
   }[];
+  /** Optional short note under the project title, e.g. what the name means. */
+  nameNote?: string;
   /** Optional build notes shown on the project page. */
   decisions?: string[];
   next?: string;
@@ -341,6 +343,7 @@ export const projects: Project[] = [
     slug: "kawe",
     org: "Personal",
     name: "Kàwé",
+    nameNote: "Kà = read, ìwé = book",
     status: "In progress",
     summary:
       "An EdTech platform I'm developing to make learning more interactive, personalized, and accessible for African children.",

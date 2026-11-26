@@ -40,7 +40,10 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </span>
             <span className="text-sm font-bold opacity-80">{project.org === "Flexie" ? "At Flexie" : "Side project"}</span>
           </div>
-          <h1 className="max-w-4xl text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.95]">{project.name}</h1>
+          <div className="flex flex-wrap items-end gap-x-6 gap-y-2">
+            <h1 className="max-w-4xl text-[clamp(2.75rem,7vw,5.75rem)] leading-[0.95]">{project.name}</h1>
+            {project.nameNote && <p className="-rotate-2 pb-2 font-hand text-3xl">{project.nameNote}</p>}
+          </div>
           <p className="max-w-2xl text-lg">{project.summary}</p>
           {project.links.length > 0 && (
             <div className="flex flex-wrap gap-3">
