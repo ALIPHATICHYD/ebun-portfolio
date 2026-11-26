@@ -50,7 +50,7 @@ export default function Footer() {
           Ẹbun.
         </p>
         <p className="text-sm">
-          © {new Date().getFullYear()} {profile.name} · Made in Lagos
+          © {new Date().getFullYear()} {profile.name}
         </p>
       </div>
     </footer>
