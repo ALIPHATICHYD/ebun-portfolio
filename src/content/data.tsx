@@ -1,24 +1,31 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faServer,
-  faCode,
-  faDiagramProject,
-  faPeopleGroup,
-} from "@fortawesome/free-solid-svg-icons";
-
 export const profile = {
   name: "Ebunoluwa Amoo",
   title: "Software Engineer",
   heroBlurb:
-    "Ebunoluwa Amoo is a penultimate-year Systems Engineering student, with a degree in Computer Science and experience in Software Engineering.",
+    "Ebunoluwa Amoo is a penultimate-year Systems Engineering student, with a Higher Diploma in Computer Science and experience in Software Engineering.",
   location: "Lagos, Nigeria",
   email: "ebunoluwaamoo@gmail.com",
   phone: "+234-701-514-7567",
   github: "https://github.com/ebun-amoo/",
   linkedin: "https://www.linkedin.com/in/ebunoluwa-amoo/",
   medium: "https://medium.com/@ebunamoo",
-  resumeFile: "/resume.pdf", 
+  resumeFile: "/resume.pdf",
+  calendly: "https://calendly.com/ebunoluwaamoo/let-s-connect",
 };
+
+// Short facts for the home page tiles. Every line comes from the experience and about content.
+export const highlights = {
+  greeting: "Ẹ káàbọ̀, welcome in!",
+  headline: "Hi, I’m Ebun.",
+  subline: "Software engineer at Flexie, builder of Kàwé, and a Python teacher at heart. Based in Lagos.",
+  studentsTaught: "500+",
+  roleSince: "Sep 2023",
+};
+
+export const stack = [
+  "Node.js", "TypeScript", "PostgreSQL", "React", "Next.js", "REST APIs",
+  "System design", "Jest", "Supabase", "Tailwind CSS", "Python", "Teaching",
+];
 
 export const about = {
   intro:
@@ -179,24 +186,26 @@ export const education = [
   },
 ];
 
-export const talents = [
+export const strengths = [
   {
-    icon: <FontAwesomeIcon icon={faServer} className="h-5 w-5" />,
-    category: "Backend Development",
+    title: "Sturdy backends",
+    body: "Node.js, TypeScript and PostgreSQL APIs. Faster queries, safe auth, Swagger docs and tests.",
+    tone: "forest",
+    icon: "database",
   },
   {
-    icon: <FontAwesomeIcon icon={faCode} className="h-5 w-5" />,
-    category: "Frontend Development",
+    title: "Friendly interfaces",
+    body: "React and Next.js screens people enjoy: a resume builder, dashboards, a shifts tool.",
+    tone: "gold",
+    icon: "screen",
   },
   {
-    icon: <FontAwesomeIcon icon={faDiagramProject} className="h-5 w-5" />,
-    category: "Project Management & Collaboration",
+    title: "Teacher energy",
+    body: "I explain clearly, lead communities and lift teammates. Most Improved Team Member at Flexie, 2023.",
+    tone: "paper",
+    icon: "cap",
   },
-  {
-    icon: <FontAwesomeIcon icon={faPeopleGroup} className="h-5 w-5" />,
-    category: "Community & Leadership",
-  },
-];
+] as const;
 
 export const skills = [
   {
@@ -294,6 +303,7 @@ export type ProjectStatus = "Ongoing" | "Completed" | "In progress";
 
 export type Project = {
   slug: string;
+  org: "Flexie" | "Personal";
   name: string;
   status: ProjectStatus;
   summary: string;
@@ -309,6 +319,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "flexie-account-dashboard",
+    org: "Flexie",
     name: "Flexie Account Dashboard",
     status: "Ongoing",
     summary:
@@ -325,6 +336,7 @@ export const projects: Project[] = [
 
     {
     slug: "kawe",
+    org: "Personal",
     name: "Kàwé",
     status: "In progress",
     summary:
@@ -338,6 +350,7 @@ export const projects: Project[] = [
 
   {
     slug: "flexie-mobile-app",
+    org: "Flexie",
     name: "Flexie Mobile App",
     status: "Ongoing",
     summary:
@@ -354,6 +367,7 @@ export const projects: Project[] = [
 
   {
     slug: "flexie-shifts-web-app",
+    org: "Flexie",
     name: "Flexie Shifts Web App",
     status: "Ongoing",
     summary:
@@ -372,6 +386,7 @@ export const projects: Project[] = [
 
   {
     slug: "automated-flexer-screening",
+    org: "Flexie",
     name: "Automated Flexer Screening with AI Agents",
     status: "Completed",
     summary:
@@ -385,6 +400,7 @@ export const projects: Project[] = [
 
   {
     slug: "flexie-authentication-app",
+    org: "Flexie",
     name: "Flexie Authentication App",
     status: "Completed",
     summary:
@@ -403,6 +419,7 @@ export const projects: Project[] = [
 
   {
     slug: "whatsapp-birthday-bot",
+    org: "Personal",
     name: "WhatsApp Birthday Bot",
     status: "Completed",
     summary:

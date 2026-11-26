@@ -1,25 +1,33 @@
 import { testimonials } from "@/content/data";
 
+const notes = [
+  { bg: "bg-gold-soft", tilt: "-rotate-2", offset: "" },
+  { bg: "bg-sage-soft", tilt: "rotate-[1.5deg]", offset: "md:mt-6" },
+  { bg: "bg-tangerine-soft", tilt: "-rotate-1", offset: "" },
+];
+
+/** Testimonials as taped sticky notes, full quotes, no truncation. */
 export default function Testimonials() {
   return (
-    <div>
-      <h2 className="heading-section heading-accent mb-8">What People Are Saying</h2>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((t, i) => (
-          <div key={i} className="card card-hover p-7 mx-auto max-w-sm flex flex-col items-center text-center">
-            <img
-              src={t.avatar}
-              alt={`Avatar of ${t.name}`}
-              className="w-14 h-14 rounded-full mb-4 ring-2 ring-gold/60 ring-offset-2 ring-offset-paper object-cover"
-            />
-            <div className="mb-3">
-              <p className="font-semibold text-forest">{t.name}</p>
-              <p className="text-xs text-ink-soft mb-3">{t.role}</p>
-            </div>
-            <p className="text-sm leading-relaxed text-ink-soft italic">&ldquo;{t.quote}&rdquo;</p>
-          </div>
-        ))}
-      </div>
+    <div className="grid items-start gap-10 md:grid-cols-3 md:gap-8">
+      {testimonials.map((t, i) => {
+        const n = notes[i % notes.length];
+        const quote = t.quote.replace(/\.{3}$/, ".");
+        return (
+          <figure key={t.name} className={`note ${n.bg} ${n.tilt} ${n.offset}`}>
+            <span className="tape" aria-hidden="true" />
+            <blockquote className="mb-5 font-display text-xl leading-snug">“{quote}”</blockquote>
+            <figcaption className="flex items-center gap-3">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={t.avatar} alt="" className="h-12 w-12 rounded-full object-cover" />
+              <span className="text-[15px] leading-tight">
+                <strong className="block">{t.name.trim()}</strong>
+                {t.role}
+              </span>
+            </figcaption>
+          </figure>
+        );
+      })}
     </div>
   );
 }

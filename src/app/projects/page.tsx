@@ -1,30 +1,30 @@
 import { projects } from "@/content/data";
-import ProjectCard from "@/components/ProjectCard";
 import CTA from "@/components/cta";
-import PatternAccent from "@/components/PatternAccent";
+import ProjectFilter from "@/components/ProjectFilter";
 
 export const metadata = {
   title: "Projects — Ebunoluwa Amoo",
+  description: "Products Ebun has built at Flexie and on her own.",
 };
 
 export default function ProjectsPage() {
+  const flexie = projects.filter((p) => p.org === "Flexie").length;
   return (
-    <section className="relative mx-auto max-w-6xl px-6 pb-20 pt-28 sm:pt-32">
-      <PatternAccent
-        variant="curl"
-        className="-right-6 -top-10 hidden md:block"
-        color="var(--tangerine)"
-        opacity={0.06}
-      />
-      <h1 className="heading-section heading-accent mb-10">
-        Things I've built
-      </h1>
-
-      <div className="grid sm:grid-cols-2 gap-10">
-        {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="wrap pt-10 pb-6 sm:pt-16">
+        <p className="font-hand text-3xl text-tangerine-deep">the work shelf</p>
+        <h1 className="max-w-4xl text-[clamp(3rem,7vw,6rem)] leading-[0.95]">
+          Things I’ve built, <span className="text-tangerine-deep">and am building.</span>
+        </h1>
+        <p className="mt-5 max-w-2xl text-lg text-ink-soft">
+          {flexie} products shipped with the team at Flexie, plus side projects I build for fun and for kids who deserve
+          better learning tools.
+        </p>
+      </section>
+      <section className="wrap py-8">
+        <ProjectFilter projects={projects} />
+      </section>
+      <CTA title="Have a project in mind?" />
+    </>
   );
 }

@@ -1,15 +1,20 @@
-import Link from "next/link";
+import { profile } from "@/content/data";
+import CopyEmail from "./CopyEmail";
+import { Sparkle } from "./Icons";
 
-export default function CTA() {
+/** Big tangerine contact block used at the end of every page. */
+export default function CTA({ title = "Let’s build something people love." }: { title?: string }) {
   return (
-    <section className="relative overflow-hidden divider-top">
-      <div className="mx-auto max-w-3xl px-6 py-16 flex flex-wrap gap-4 justify-center">
-        <Link href="/projects" className="btn btn-primary">
-          Explore my work
-        </Link>
-        <a href="mailto:ebunoluwaamoo@gmail.com" className="btn btn-outline">
-          Get in touch
-        </a>
+    <section className="wrap pt-10 pb-24">
+      <div className="tile flex flex-col gap-7 bg-tangerine px-7 py-14 text-on-tangerine sm:px-16 sm:py-20">
+        <Sparkle size={160} color="var(--gold)" className="spin-slow absolute -top-5 -right-5" />
+        <h2 className="relative max-w-4xl text-5xl leading-[0.95] sm:text-[84px]">{title}</h2>
+        <div className="relative flex flex-wrap items-center gap-3">
+          <a href={profile.calendly} className="btn btn-primary">
+            Book a 15-min call
+          </a>
+          <CopyEmail email={profile.email} />
+        </div>
       </div>
     </section>
   );

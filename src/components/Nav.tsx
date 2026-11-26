@@ -2,127 +2,112 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faPhone, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 import { profile } from "@/content/data";
+import { Close, Download, Menu } from "./Icons";
 
 const navLinks = [
-  { label: "Projects", href: "/projects" },
+  { label: "Work", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Experience", href: "/experience" },
-  {
-    label: "Resume",
-    href: profile.resumeFile,
-    external: true,
-    newTab: true,
-  },
-  {
-    label: "Contact",
-    href: `https://calendly.com/ebunoluwaamoo/let-s-connect`,
-    external: true,
-  },
 ];
 
 export default function Nav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  // The sheet remembers the page it was opened on, so it closes by itself when the route changes.
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const isOpen = openOn === pathname;
+
+  const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="bg-forest text-cream fixed top-0 left-0 right-0 z-50 border-b border-white/10">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <Link
-        href="/"
-        aria-label="Home"
-        className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold text-xl font-display text-cream transition-all hover:scale-105 hover:bg-white/5"
-      >
-        <span className="-translate-y-px">Ẹ</span>
-      </Link>
-
-        {/* Desktop */}
+    <header className="sticky top-0 z-50 pt-3 pb-2 sm:pt-5">
+      <div className="wrap">
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-8 text-sm sm:flex"
+          className="flex items-center justify-between rounded-full border border-line bg-paper/90 py-1.5 pr-1.5 pl-2 backdrop-blur"
         >
-          {navLinks.map((link) =>
-            link.external ? (
-              <a
-                key={link.label}
-                href={link.href}
-                target={link.newTab ? "_blank" : undefined}
-                rel={link.newTab ? "noopener noreferrer" : undefined}
-                className="rounded text-cream/80 transition-colors hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-              >
-                {link.label === "Contact" ? (
-                  <span className="flex items-center gap-2 p-2 rounded-full bg-white/10">
-                    <FontAwesomeIcon icon={faPhone} className="w-3 h-3" />
-                    Let's talk
-                  </span>
-                ) : (
-                  link.label
-                )}
-              </a>
-            ) : (
+          <Link href="/" aria-label="Ebunoluwa Amoo, home" className="flex items-center gap-2.5 rounded-full">
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-forest font-display text-[22px] text-gold">
+              Ẹ
+            </span>
+            <span className="font-display text-xl font-[650] text-forest">ebun.</span>
+          </Link>
+
+          <div className="hidden items-center gap-1 sm:flex">
+            {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="rounded text-cream/80 transition-colors hover:text-gold"
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={`rounded-full px-4 py-3 text-[15px] font-semibold transition-colors ${
+                  isActive(link.href) ? "bg-gold text-forest" : "text-ink hover:bg-gold-soft"
+                }`}
               >
                 {link.label}
               </Link>
-            )
-          )}
-        </nav>
+            ))}
+            <a
+              href={profile.resumeFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 rounded-full px-4 py-3 text-[15px] font-semibold text-ink hover:bg-gold-soft"
+            >
+              Résumé <Download size={16} />
+            </a>
+            <a href={profile.calendly} className="btn btn-tangerine ml-1 min-h-[2.875rem]">
+              Let’s talk
+            </a>
+          </div>
 
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
-          aria-expanded={isOpen}
-          className="rounded p-2 transition-colors hover:bg-white/10 sm:hidden"
-        >
-          <FontAwesomeIcon icon={isOpen ? faXmark : faBars} size="lg" />
-        </button>
+          <button
+            type="button"
+            onClick={() => setOpenOn(isOpen ? null : pathname)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+            className="grid h-12 w-12 place-items-center rounded-full bg-tangerine text-on-tangerine sm:hidden"
+          >
+            {isOpen ? <Close size={22} /> : <Menu size={22} />}
+          </button>
+        </nav>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <nav
-          aria-label="Primary"
-          className="border-t border-white/10 px-6 py-4 sm:hidden"
-        >
-          <div className="flex flex-col gap-4 text-sm">
-            {navLinks.map((link) =>
-              link.external ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target={link.newTab ? "_blank" : undefined}
-                  rel={link.newTab ? "noopener noreferrer" : undefined}
-                  onClick={() => setIsOpen(false)}
-                  className="text-cream/80 transition-colors hover:text-gold"
-                >
-                  {link.label === "Contact" ? (
-                    <span className="flex items-center gap-2 p-2 rounded-full bg-white/10 transition-colors hover:bg-gold/20 hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold">
-                      <FontAwesomeIcon icon={faPhone} className="w-3 h-3" />
-                      Let's talk
-                    </span>
-                  ) : (
-                    link.label
-                  )}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-cream/80 transition-colors hover:text-gold"
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-          </div>
-        </nav>
+        <div className="fixed inset-0 top-0 z-40 h-dvh sm:hidden" id="mobile-menu">
+          <button
+            type="button"
+            aria-label="Close menu"
+            onClick={() => setOpenOn(null)}
+            className="absolute inset-0 bg-forest/60"
+          />
+          <nav
+            aria-label="Mobile"
+            className="absolute inset-x-0 bottom-0 flex flex-col rounded-t-[28px] bg-paper px-5 pt-3 pb-8"
+          >
+            <span aria-hidden="true" className="mx-auto mb-3 h-1.5 w-11 rounded-full bg-line-strong" />
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="flex min-h-14 items-center border-b border-line font-display text-[26px]"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <a
+              href={profile.resumeFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex min-h-14 items-center justify-between font-display text-[26px]"
+            >
+              Résumé <Download size={20} />
+            </a>
+            <a href={profile.calendly} className="btn btn-primary mt-4">
+              Book a 15-min call
+            </a>
+          </nav>
+        </div>
       )}
     </header>
   );
